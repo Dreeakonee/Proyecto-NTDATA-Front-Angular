@@ -1,0 +1,49 @@
+
+<div class="container">
+
+    <form [formGroup]="formProducto" (ngSubmit)="submit()">
+        <br><br><br><br>
+        <h2>FORMULARIO</h2>
+        <label for="">Nombre</label><br>
+        <input class="form-control" type="text" formControlName="nombre" maxlength="16" required><br>
+        <span *ngIf="this.formProducto.controls['nombre'].errors?.['required']">
+            Debe completar nombre.
+        </span><br>
+        <span *ngIf="this.formProducto.controls['nombre'].errors?.['minlength']">
+            Debe tener minimo 2 caracteres.
+        </span><br>
+        <span *ngIf="this.formProducto.controls['nombre'].errors?.['maxlength']">
+            El nombre no debe exceder los 15 caracteres.
+        </span><br>
+
+
+        <label for="">Descripcion</label><br>
+        <input class="form-control" type="text" formControlName="descripcion" maxlength="41" required><br>
+        <span *ngIf="this.formProducto.controls['descripcion'].errors?.['required']">
+            Debe añadir descripcion
+        </span><br>
+        <span *ngIf="this.formProducto.controls['descripcion'].errors?.['maxlength']">
+            Descripcion debe tener como maximo 40 caracteres.
+        </span><br>
+
+
+
+        <label for="">Precio</label><br>
+        <input class="form-control" type="number" formControlName="precio" required><br>
+        <span *ngIf="this.formProducto.controls['precio'].errors?.['required']">
+            Debe ingresar el precio.
+        </span><br>
+        <div *ngIf="this.formProducto.controls['precio'].errors?.['min']">
+            <p>El precio debe ser mayor a 0</p>
+        </div>
+
+
+        <button  class="btn btn-primary"type="submit">Enviar</button>
+
+    </form>
+
+    <div>
+        {{mostrar}}
+    </div>
+
+</div>
